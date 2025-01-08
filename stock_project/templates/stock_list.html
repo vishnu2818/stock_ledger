@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+    {% load static %}
     <title>Stock List</title>
+    <link href="{% static 'css/stock_list.css' %}" rel="stylesheet">
 </head>
 <body>
     <h2>Stock Items</h2>
-    <a href="{% url 'stock-add' %}">Add New Item</a>
-    <a href="{% url 'upload-excel' %}">Upload Excel</a>
-     <!-- Add download link -->
-    <a href="{% url 'download-excel' %}">Download Excel</a>
-    <table border="1">
-        <tr>
+    <div id="link-div">
+    <a class="link" href="{% url 'stock-add' %}">Add New Item</a>
+    <a class="link" href="{% url 'upload-excel' %}">Upload Excel</a>
+    <a class="link" href="{% url 'download-excel' %}">Download Excel</a>
+        </div>
+    <table border="1" id="table">
+        <tr style="color: blue;">
             <th>Medicine</th>
-            <th>SCOPE QUANTITY</th>
+            <th>Scope Quantity</th>
             <th>Available Quantity</th>
-            <th>NET CONSUMED</th>
+            <th>Net Consumed</th>
             <th>Week 1</th>
             <th>Week 2</th>
             <th>Week 3</th>

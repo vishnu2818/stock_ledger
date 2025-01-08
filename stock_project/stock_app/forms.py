@@ -1,10 +1,10 @@
 from django import forms
+from .models import StockItem
+
 
 class ExcelUploadForm(forms.Form):
     file = forms.FileField()
 
-from django import forms
-from .models import StockItem
 
 class StockItemForm(forms.ModelForm):
     class Meta:

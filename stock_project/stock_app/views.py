@@ -31,7 +31,6 @@ def upload_excel(request):
 # Class-based views for listing, creating, updating, and deleting stock items
 
 
-
 class StockListView(ListView):
     model = StockItem
     template_name = 'stock_list.html'
@@ -110,15 +109,15 @@ def download_excel(request):
     for item in stock_items:
         data.append({
             'Medicine': item.name,
-            'SCOPE QUANTITY': item.category,
-            'Avalaible Quantiy': item.quantity,
+            'Scope Quantity': item.category,
+            'Available Quantity': item.quantity,
             'NET CONSUMED': item.price,
             'Week 1': item.week1,
             'Week 2': item.week2,
             'Week 3': item.week3,
             'Week 4': item.week4,
             'Week 5': item.week5,
-            'Total': item.total
+            # 'Total': item.total
         })
 
     # Create a pandas DataFrame
