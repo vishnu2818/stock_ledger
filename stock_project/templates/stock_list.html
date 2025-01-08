@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock List</title>
+</head>
+<body>
+    <h2>Stock Items</h2>
+    <a href="{% url 'stock-add' %}">Add New Item</a>
+    <a href="{% url 'upload-excel' %}">Upload Excel</a>
+     <!-- Add download link -->
+    <a href="{% url 'download-excel' %}">Download Excel</a>
+    <table border="1">
+        <tr>
+            <th>Medicine</th>
+            <th>SCOPE QUANTITY</th>
+            <th>Available Quantity</th>
+            <th>NET CONSUMED</th>
+            <th>Week 1</th>
+            <th>Week 2</th>
+            <th>Week 3</th>
+            <th>Week 4</th>
+            <th>Week 5</th>
+<!--            <th>Total</th>-->
+            <th>Actions</th>
+        </tr>
+        {% for stock in stocks %}
+        <tr>
+            <td>{{ stock.name }}</td>
+            <td>{{ stock.category }}</td>
+            <td>{{ stock.quantity }}</td>
+            <td>{{ stock.price }}</td>
+            <td>{{ stock.week1 }}</td>
+            <td>{{ stock.week2 }}</td>
+            <td>{{ stock.week3 }}</td>
+            <td>{{ stock.week4 }}</td>
+            <td>{{ stock.week5 }}</td>
+<!--            <td>{{ stock.total }}</td>-->
+            <td>
+                <a href="{% url 'stock-edit' stock.id %}">Edit</a>
+                <a href="{% url 'stock-delete' stock.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
