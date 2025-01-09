@@ -2,10 +2,10 @@ from django.db import models
 
 class StockItem(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
-    category = models.IntegerField() #SCOPE QUANTITY
-    quantity = models.IntegerField() #Avalaible Quantity
-    price = models.DecimalField(max_digits=10, decimal_places=2) #NET CONSUMED
+    medicine  = models.CharField(max_length=100) #Medicine
+    scope_quantity  = models.IntegerField() #SCOPE QUANTITY
+    available_quantity  = models.IntegerField() #Avalaible Quantity
+    net_consumed  = models.IntegerField() #NET CONSUMED
 
     # Week fields
     week1 = models.IntegerField(default=0)
@@ -19,14 +19,14 @@ class StockItem(models.Model):
 
     def update_available_qty(self):
         # self.quantity = 0
-        self.quantity = self.category - self.price
-        print(self.category,self.price)
+        self.available_quantity = self.scope_quantity - self.net_consumed
+        print(self.scope_quantity,self.net_consumed)
         # self.save()
 
 
     def update_price(self):
         # self.price = 0.0
-        self.price = self.week1 + self.week2 + self.week3 + self.week4 + self.week5
+        self.net_consumed = self.week1 + self.week2 + self.week3 + self.week4 + self.week5
         # self.save()
 
 
@@ -36,4 +36,4 @@ class StockItem(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.name
+        return self.medicine

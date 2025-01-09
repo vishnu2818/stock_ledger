@@ -17,10 +17,10 @@ def upload_excel(request):
             for _, row in df.iterrows():
                 # Create the StockItem, number will auto-generate
                 StockItem.objects.create(
-                    name=row['Name'],
-                    category=row['Category'],
-                    quantity=row['Quantity'],
-                    price=row['Price'],
+                    medicine=row['Medicine'],
+                    scope_quantity=row['Scope Quantity'],
+                    available_quantity=row['Available Quantity'],
+                    net_consumed=row['Net Consumed'],
                 )
             return redirect('stock-list')
     else:
@@ -60,14 +60,14 @@ from .forms import StockItemForm
 
 class StockCreateView(CreateView):
     model = StockItem
-    fields = ['name', 'category', 'quantity', 'price', 'week1', 'week2', 'week3', 'week4', 'week5']
+    fields = ['medicine', 'scope_quantity', 'available_quantity', 'net_consumed', 'week1', 'week2', 'week3', 'week4', 'week5']
     template_name = 'stock_form.html'
     success_url = reverse_lazy('stock-list')
 
 
 class StockUpdateView(UpdateView):
     model = StockItem
-    fields = ['name', 'category', 'quantity', 'price', 'week1', 'week2', 'week3', 'week4', 'week5']
+    fields = ['medicine', 'scope_quantity', 'available_quantity', 'net_consumed', 'week1', 'week2', 'week3', 'week4', 'week5']
     template_name = 'stock_form.html'
     success_url = reverse_lazy('stock-list')
 
@@ -108,10 +108,10 @@ def download_excel(request):
     data = []
     for item in stock_items:
         data.append({
-            'Medicine': item.name,
-            'Scope Quantity': item.category,
-            'Available Quantity': item.quantity,
-            'NET CONSUMED': item.price,
+            'Medicine': item.medicine,
+            'Scope Quantity': item.scope_quantity,
+            'Available Quantity': item.available_quantity,
+            'NET CONSUMED': item.net_consumed,
             'Week 1': item.week1,
             'Week 2': item.week2,
             'Week 3': item.week3,

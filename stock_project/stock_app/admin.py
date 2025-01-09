@@ -4,13 +4,13 @@ from .models import StockItem
 @admin.register(StockItem)
 class StockItemAdmin(admin.ModelAdmin):
     # Columns to display in the admin list view
-    list_display = ('name', 'category', 'quantity', 'price', 'week1', 'week2', 'week3', 'week4', 'week5', 'total')
+    list_display = ('medicine', 'scope_quantity', 'available_quantity', 'net_consumed', 'week1', 'week2', 'week3', 'week4', 'week5', 'total')
 
     # Add a search bar for 'name' and 'category'
-    search_fields = ('name', 'category')
+    search_fields = ('medicine', 'scope_quantity')
 
     # Add a filter by 'category'
-    list_filter = ('category',)
+    list_filter = ('scope_quantity',)
 
     # Optional: Add functionality to edit 'total' (this is more for convenience in the admin)
     # In case you need to allow modification of the 'total' field directly in the admin interface.

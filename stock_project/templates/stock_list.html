@@ -14,6 +14,7 @@
         </div>
     <table border="1" id="table">
         <tr style="color: blue;">
+            <th>S.No</th>
             <th>Medicine</th>
             <th>Scope Quantity</th>
             <th>Available Quantity</th>
@@ -28,10 +29,11 @@
         </tr>
         {% for stock in stocks %}
         <tr>
-            <td>{{ stock.name }}</td>
-            <td>{{ stock.category }}</td>
-            <td>{{ stock.quantity }}</td>
-            <td>{{ stock.price }}</td>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ stock.medicine }}</td>
+            <td>{{ stock.scope_quantity }}</td>
+            <td>{{ stock.available_quantity }}</td>
+            <td>{{ stock.net_consumed }}</td>
             <td>{{ stock.week1 }}</td>
             <td>{{ stock.week2 }}</td>
             <td>{{ stock.week3 }}</td>
